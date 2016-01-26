@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Auction House</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="margin: 15px;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            <a href="@Url.Action("Index", "Home")">
+                <img src="@Url.Content("~/Content/Images/ah_logo.png")" alt="Auction House Logo" height="80" style="padding: 5px"/>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" style="font-size: 1.7em; padding-top: 35px;">
+                <li>@Html.ActionLink("Catalogue", "Index", "Categories")</li>
+                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        //@Html.ActionLink("Admin Panel", "Index", "Admin")
+                        <div class="dropdown" style="cursor: pointer; padding: 0.27em 0 0 0.6em;">
+                            <span class="dropdown-toggle" data-toggle="dropdown">
+                                <span style="color: white">Admin Panel</span>
+                                <span class="caret"  style="color: white"></span>
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Items list", "Index", "Items")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Sold items", "Sold", "Items")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Item requests", "Index", "ItemRequests")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Active auctions", "Index", "Auctions")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Placed bids", "Index", "Bids")</li>
+                            </ul>
+                        </div>
+                    }
+                    else if (User.IsInRole("Customer"))
+                    {
+                        @Html.ActionLink("Request Item", "Create", "ItemRequests")
+                    }
+                </li>
+            </ul>
+
+            @Html.Partial("_LoginPartial")
+
+        </div>
+
+    </div>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - COS 315a Software Development Technologies, Fall 2015</p>
+    </footer>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", false)
+</body>
+</html>

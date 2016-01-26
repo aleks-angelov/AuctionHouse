@@ -1,0 +1,94 @@
+﻿@model AuctionHouseNew.Models.Item
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+
+<table>
+    <tr>
+        <td rowspan="3" style="padding: 20px 40px 20px 20px;">
+            <img src="@Url.Content(Model.ImagePath)" alt="@Model.Name" height="350" style="padding: 10px 0 10px 0"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="font-size: 3em;">@ViewBag.Title</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+            <div style="font-size: 24px">
+                <p>
+                    @Html.DisplayNameFor(model => model.Description):
+                </p>
+            </div>
+
+            <div style="font-size: 21px">
+                @Html.DisplayFor(model => model.Description)
+            </div>
+
+            <br/><br/>
+
+            <div style="font-size: 24px">
+                @if (ViewBag.HasAuction)
+                {
+                    <p>
+                        Current bid:
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @Html.DisplayNameFor(model => model.Valuation):
+                    </p>
+                }
+            </div>
+
+            <div style="font-size: 21px">
+                $@Html.DisplayFor(model => model.Valuation)
+            </div>
+
+            <br/><br/>
+
+            @if (User.IsInRole("Admin"))
+            {
+                if (ViewBag.HasAuction)
+                {
+                    <b>
+                        This item is already up for auction!
+                    </b>
+                }
+                else
+                {
+                    <a href="@Url.Action("Create", "Auctions", new {id = Model.ItemID})" class="btn btn-default" style="font-size: 15px" @ViewBag.AuctionStatus title="@ViewBag.AuctionTooltip">
+                        Start Auction
+                    </a>
+                }
+            }
+            else
+            {
+                if (ViewBag.HasAuction)
+                {
+                    <a href="@Url.Action("Create", "Bids", new {id = Model.ItemID})" class="btn btn-default" style="font-size: 15px" @ViewBag.BidStatus title="@ViewBag.BidTooltip">
+                        Bid Now
+                    </a>
+                }
+                else
+                {
+                    <b>
+                        This item is not up for auction yet!
+                    </b>
+                }
+            }
+
+        </td>
+    </tr>
+</table>
+
+@*Scaffolded code:
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ItemID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

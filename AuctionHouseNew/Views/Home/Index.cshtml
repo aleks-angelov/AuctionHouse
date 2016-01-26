@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div style="align-items: center;">
+    <img src="@Url.Content("~/Content/Images/ah_background.png")" alt="Auction House Background" style="width: 100%;"/>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>Most Wanted:</h1>
+        <table style="margin-bottom: 5px">
+            <tr>
+                <td style="border-right: 1px solid #ccc">
+                    <img src="@Url.Content("~/Content/Images/item_art_1.jpg")" alt="Venice Twilight" height="100" style="padding-right: 20px"/>
+                </td>
+                <td>
+                    <div style="padding-left: 20px">
+                        <a href="@Url.Action("Details", "Items", new {id = 47})">
+                            <h4>Venice Twilight</h4>
+                        </a>
+                        <p>Author: Claude Monet</p>
+                        <p>
+                            <b>Valuation: $125,000</b>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h1>Newest Item:</h1>
+        <table style="margin-bottom: 5px">
+            <tr>
+                <td style="border-right: 1px solid #ccc">
+                    <img src="@Url.Content("~/Content/Images/item_coin_1.jpg")" alt="Ocho Reales (Coin)" height="100" style="padding-right: 20px"/>
+                </td>
+                <td>
+                    <div style="padding-left: 20px">
+                        <a href="@Url.Action("Details", "Items", new {id = 49})">
+                            <h4>Ocho Reales (Coin)</h4>
+                        </a>
+                        <p>Author: Spanish Monetary Court</p>
+                        <p>
+                            <b>Valuation: $90,000</b>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@model AuctionHouseNew.Models.Auction
+
+@{
+    ViewBag.Title = "Auction Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    @*<h4>Auction</h4>*@
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Item")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WinnerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WinnerID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.AuctionID}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AuctionHouseNew.Models.Bid>
+
+@{
+    ViewBag.Title = "Bid Index";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Auction.AuctionID)
+        </th>
+        <th>
+            @Html.Label("Item")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BidderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaceTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auction.AuctionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auction.Item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlaceTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.BidID}) |
+                @Html.ActionLink("Details", "Details", new {id = item.BidID}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.BidID})
+            </td>
+        </tr>
+    }
+
+</table>

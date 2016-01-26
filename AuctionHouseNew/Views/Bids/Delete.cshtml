@@ -1,0 +1,65 @@
+﻿@model AuctionHouseNew.Models.Bid
+
+@{
+    ViewBag.Title = "Delete Bid";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Are you sure you want to delete this bid?</h3>
+<div>
+    @*<h4>Bid</h4>*@
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Auction.AuctionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auction.AuctionID)
+        </dd>
+
+        <dt>
+            @Html.Label("Item")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Auction.Item.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BidderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BidderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaceTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default"/> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
