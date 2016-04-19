@@ -2,6 +2,8 @@
 
 ### Group class project for COS 315 - Software Engineering (Fall 2015)
 
+![Auction House](http://i.imgur.com/uyPaLGX.jpg)
+
 ##### Task:
 Develop a software package to manage an auction house’s catalogue of items for sale.
 
